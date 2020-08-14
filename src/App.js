@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UserCard from "./components/UserCard";
+import UserForm from "./components/UserForm";
+import useUserModel from "./utils/useUserModel";
+import UserContext from "./utils/UserContext";
 
 function App() {
+
+const userModel = useUserModel();
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container text-center">
+      <h1 className ="mt-4 mb-4" >Welcome to the custom side of things</h1>
+
+      <div className = "jumbotron">
+
+        <UserContext.Provider value={userModel}>
+        <UserForm/>
+        <UserCard/>
+        </UserContext.Provider>
+      </div>
+   
     </div>
   );
 }
